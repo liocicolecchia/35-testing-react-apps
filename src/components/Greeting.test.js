@@ -24,13 +24,13 @@ describe("Greeting component", () => {
     expect(outputElement).toBeInTheDocument();
   });
 
-  test("renders changed if the button was clicked", async () => {
+  test("renders changed if the button was clicked", () => {
     // Arange
     render(<Greeting />);
 
     // Act
     const buttonElement = screen.getByRole("button");
-    await userEvent.click(buttonElement);
+    userEvent.click(buttonElement);
 
     // Assert
     const outputElement = screen.getByText("changed", {
