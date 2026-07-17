@@ -38,4 +38,19 @@ describe("Greeting component", () => {
     });
     expect(outputElement).toBeInTheDocument();
   });
+
+  test("dose not render good to see you if the button was clicked", () => {
+    // Arange
+    render(<Greeting />);
+
+    // Act
+    const buttonElement = screen.getByRole("button");
+    userEvent.click(buttonElement);
+
+    // Assert
+    const outputElement = screen.queryByText("good to see you", {
+      exact: false,
+    });
+    expect(outputElement).toBeNull();
+  });
 });
